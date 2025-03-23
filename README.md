@@ -4,7 +4,8 @@ A small but fun RAG project app where we search on little reminder or doodle not
 
 This app is paired with back end in [notes-search-ai-api](https://github.com/svyoung/notes-search-ai-api)
 
-Demo coming soon!
+## Demo
+[Smart Notes](https://smartnotesai.netlify.app/)
 
 ## **Front end:**
 React + Vite 
