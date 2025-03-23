@@ -34,10 +34,22 @@ p {
   width: 100%;
 }
 
+.main {
+  position: relative;
+}
+
 .notes-panel, .special-font {
   font-family: "Kalam", cursive;
   font-weight: 300;
   font-style: normal;
+}
+
+.announcement {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
 }
 
 @media (min-width:100px) {
@@ -66,13 +78,4 @@ p {
   .hide {
     display: none;
   }
-  /* .force-mobile-display {
-    display: block!;
-  } */
 }
-
-/* @media (min-width:500px) {
-  .mobile {
-    display: none;
-  }
-} */

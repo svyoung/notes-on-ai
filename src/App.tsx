@@ -3,6 +3,7 @@ import NotesPanel from './components/NotesPanel'
 import SearchNote from './components/SearchNote'
 import Editor from './components/Editor'
 import Note from './components/notes/Note'
+import Announcement from './components/Announcement'
 import { addNote, fetchAllNotes, searchSimilaryNotes } from './lib/actions'
 import './App.css'
 
@@ -75,6 +76,7 @@ function App() {
   return (
     <>
       <div className="h-[100vh] overflow-hidden main">
+        <Announcement />
         <header>
             <div><SearchNote searchNote={searchNote} clearSearch={resetSearch} searchFilterOn={searchFilterOn} /></div>
           </header>

@@ -66,7 +66,6 @@ const Editor = ({ addNewNote, addStatus, closeOut }:Props) => {
       <div className="text-right right-2 top-1 pointer-cursor mb-5 hide" role="button" onClick={closeOut}>
         <CloseIcon className="pointer-cursor" sx={{ fontSize: "2rem"}} />
       </div>
-      <Announcement />
       <h1 className="block text-center p-4 pb-6 text-[2.5rem] special-font">New Note</h1>
       <div className=" w-full lg:w-[70%]  m-auto text-[1.2rem] mb-4 special-font">
         <input value={title} name="title" onChange={(e) => setTitle(e.target.value)} placeholder="title" className="border-b-1 border-[#dcdcdc] w-full outline-none px-5" />
