@@ -31,16 +31,22 @@ function App() {
   }
 
   useEffect(() => {
-    setIsLoading(true)
-    try {
-      resetSearch()
-      setIsLoading(false)
-    } catch (error) {
-      setIsLoading(false)
-      console.log("error fetching all the notes", error)
-    } finally {
-      setIsLoading(false)
-    }
+    let isMounted = true; 
+    const fetchNotes = async () => {
+      setIsLoading(true);
+      try {
+        await resetSearch();
+      } catch (error) {
+        console.error("Error fetching all the notes", error);
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
+    };
+    fetchNotes();
+
+    return () => {
+      isMounted = false;
+    };
   }, [])
 
   const searchNote = async (query: string) => {
@@ -71,7 +77,7 @@ function App() {
                 {isLoading && "loading..."}
               </div>
               <div className="w-2/3 p-4 px-6 overflow-auto">
-                {noteSelected ?
+                {noteSelected && selectedNote ?
                   <Note note={selectedNote} />
                   :
                   <Editor/>
