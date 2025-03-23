@@ -2,8 +2,8 @@ import NoteItem from "./notes/NoteItem"
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 interface Note {
-    id: number,
-    title: string,
+    id?: number
+    title: string
     text: string
 }
 

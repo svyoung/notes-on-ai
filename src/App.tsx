@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import NotesPanel from './components/NotesPanel'
 import SearchNote from './components/SearchNote'
 import Editor from './components/Editor'
 import Note from './components/notes/Note'
-import { fetchAllNotes, searchSimilaryNotes } from './lib/actions'
+import { addNote, fetchAllNotes, searchSimilaryNotes } from './lib/actions'
 import './App.css'
 
 interface Note {
-  id: number,
-  title: string,
-  text: string
+  id?: number;
+  title: string;
+  text: string;
 }
 
 type Notes = Note[]
@@ -20,16 +20,29 @@ function App() {
   const [noteSelected, setNoteSelected] = useState<boolean>(false)
   const [selectedNote, setSelectedNote] = useState<Note>()
   const [notes, setNotes] = useState<Notes>([])
+  const [addStatus, setAddStatus] = useState<string>("")
   const [searchFilterOn, setSearchFilterOn] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const resetSearch = async () => {
     const { notes } = await fetchAllNotes(fetchUrl)
-    const sortedNotes = notes.sort((a: Note, b: Note) => b.id - a.id)
+    const sortedNotes = notes.sort((a: Note, b: Note) => (b.id ?? 0) - (a.id ?? 0))
     setNotes(sortedNotes);
     setSearchFilterOn(false);
   }
 
+  const addNewNote = useCallback(async (note: Note) => {
+      try {
+        const { status } = await addNote(fetchUrl, note);
+        if(status === "success") {
+          setAddStatus("success")
+          console.log("Success adding note!")
+        }
+      } catch (e) {
+        console.log("Unable to add your note. Please try again", e)
+      }
+  }, [])
+  
   useEffect(() => {
     let isMounted = true; 
     const fetchNotes = async () => {
@@ -47,12 +60,16 @@ function App() {
     return () => {
       isMounted = false;
     };
-  }, [])
+  }, [addStatus])
 
   const searchNote = async (query: string) => {
-    const { results } = await searchSimilaryNotes(fetchUrl, query)
-    setNotes(results)
-    setSearchFilterOn(true)
+    try {
+      const { results } = await searchSimilaryNotes(fetchUrl, query)
+      setNotes(results)
+      setSearchFilterOn(true)
+    } catch (e) {
+      console.log("Having trouble searching similar notes. Please try again", e)
+    }
   }
 
   return (
@@ -80,7 +97,7 @@ function App() {
                 {noteSelected && selectedNote ?
                   <Note note={selectedNote} />
                   :
-                  <Editor/>
+                  <Editor addNewNote={addNewNote} addStatus={addStatus} />
                 }
               </div>
             </div>
