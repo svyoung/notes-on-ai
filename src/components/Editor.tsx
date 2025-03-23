@@ -76,7 +76,7 @@ const Editor = ({ addNewNote, addStatus }:Props) => {
         />
         <div className="py-5 flex flex-col">
           <label htmlFor="Password">Password</label>
-          <input type="password" value={password} name="password" onChange={(e) => setPassword(e.target.value)} className="border border-[#cecece] outline-none w-1/3 px-3 py-2 my-2" />
+          <input type="password" value={password} name="password" onChange={(e) => setPassword(e.target.value)} className="border border-[#cecece] outline-none w-full md:w-[40%] px-3 py-2 my-2" />
         </div>
         <div className="items-end">
           <button
