@@ -39,3 +39,40 @@ p {
   font-weight: 300;
   font-style: normal;
 }
+
+@media (min-width:100px) {
+  .mobile {
+    display: none;
+  }
+  .force-mobile-display {
+    display: block!important;
+  }
+}
+
+@media (max-width: 760px) {
+  .note-panel {
+    position: absolute;
+    width: 100%;
+  }
+}
+
+@media (min-width:700px) {
+  .mobile {
+    display: block !important;
+  }
+  note-panel {
+    position: block !important;
+  }
+  .hide {
+    display: none;
+  }
+  /* .force-mobile-display {
+    display: block!;
+  } */
+}
+
+/* @media (min-width:500px) {
+  .mobile {
+    display: none;
+  }
+} */

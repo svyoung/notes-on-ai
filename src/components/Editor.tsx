@@ -1,6 +1,7 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import { useDebounce } from 'use-debounce';
 import Announcement from './Announcement';
+import CloseIcon from '@mui/icons-material/Close';
 
 interface Note {
   title: string,
@@ -9,12 +10,13 @@ interface Note {
 
 interface Props {
   addNewNote: (note:Note) => void
+  closeOut: () => void,
   addStatus: string
 }
 
 const validPassword = import.meta.env.VITE_ADD_PW
 
-const Editor = ({ addNewNote, addStatus }:Props) => {
+const Editor = ({ addNewNote, addStatus, closeOut }:Props) => {
   const [title, setTitle] = useState<string>("")
   const [note, setNote] = useState<string>(sessionStorage.getItem("newNote") || "");
   const [password, setPassword] = useState<string>("");
@@ -60,7 +62,10 @@ const Editor = ({ addNewNote, addStatus }:Props) => {
     }
   }
   return (
-    <div className="editor-panel flex flex-col align-center new-note mb-6 pb-[4rem]">
+    <div className="editor-panel flex flex-col align-center new-note mb-6 pb-[4rem] bg-white">
+      <div className="text-right right-2 top-1 pointer-cursor mb-5 hide" role="button" onClick={closeOut}>
+        <CloseIcon className="pointer-cursor" sx={{ fontSize: "2rem"}} />
+      </div>
       <Announcement />
       <h1 className="block text-center p-4 pb-6 text-[2.5rem] special-font">New Note</h1>
       <div className=" w-full lg:w-[70%]  m-auto text-[1.2rem] mb-4 special-font">

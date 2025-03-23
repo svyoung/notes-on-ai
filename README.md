@@ -9,8 +9,6 @@ This app is paired with back end in [notes-search-ai-api](https://github.com/svy
 
 PS. If you'd like to add some notes, you'll have to email me for the password 😁
 
-Note 2: Currently **NOT AS** mobile-friendly at the moment, so please view on your DESKTOP. 
-
 ## **Front end:**
 React + Vite + MUI
 ## **Back end:** 
