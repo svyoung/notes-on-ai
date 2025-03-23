@@ -7,10 +7,10 @@ This app is paired with back end in [notes-search-ai-api](https://github.com/svy
 ## Demo
 [Smart Notes](https://smartnotesai.netlify.app/)
 
-Note: Not **AS** mobile-friendly at the moment, so please view on your DESKTOP. 
+PS. If you'd like to add some notes, you'll have to email me for the password 😁
 
 ## **Front end:**
-React + Vite 
+React + Vite + MUI
 ## **Back end:** 
 FastAPI + Python + OpenAI Embeddings + AWS RDS PostgreSQL
 

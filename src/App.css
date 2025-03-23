@@ -34,8 +34,60 @@ p {
   width: 100%;
 }
 
+.main {
+  position: relative;
+}
+
 .notes-panel, .special-font {
   font-family: "Kalam", cursive;
   font-weight: 300;
   font-style: normal;
+}
+
+.announcement {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+@media (min-width:100px) {
+  .mobile {
+    display: none;
+  }
+  .wrapper {
+    height: 100vh;
+  }
+  .force-mobile-display {
+    display: block!important;
+  }
+}
+
+@media (max-width: 760px) {
+  .main {
+    overflow: auto;
+  }
+  .wrapper {
+    height: 100vh;
+    overflow: auto;
+  }
+  .note-panel {
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    height: 100vh;
+  }
+}
+
+@media (min-width:700px) {
+  .mobile {
+    display: block !important;
+  }
+  note-panel {
+    position: block !important;
+  }
+  .hide {
+    display: none;
+  }
 }

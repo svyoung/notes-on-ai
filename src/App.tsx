@@ -3,6 +3,7 @@ import NotesPanel from './components/NotesPanel'
 import SearchNote from './components/SearchNote'
 import Editor from './components/Editor'
 import Note from './components/notes/Note'
+import Announcement from './components/Announcement'
 import { addNote, fetchAllNotes, searchSimilaryNotes } from './lib/actions'
 import './App.css'
 
@@ -18,7 +19,7 @@ const fetchUrl = import.meta.env.VITE_SERVICE_API_URL
 
 function App() {
   const [noteSelected, setNoteSelected] = useState<boolean>(false)
-  const [selectedNote, setSelectedNote] = useState<Note>()
+  const [selectedNote, setSelectedNote] = useState<Note | undefined>()
   const [notes, setNotes] = useState<Notes>([])
   const [addStatus, setAddStatus] = useState<string>("")
   const [searchFilterOn, setSearchFilterOn] = useState<boolean>(false)
@@ -74,30 +75,34 @@ function App() {
 
   return (
     <>
-      <div className="h-[100vh] overflow-hidden main">
+      <div className="h-[100vh] main">
+        <Announcement />
         <header>
             <div><SearchNote searchNote={searchNote} clearSearch={resetSearch} searchFilterOn={searchFilterOn} /></div>
           </header>
           <main>
-            <div className="flex w-full justify-between h-[100vh] border-t-[#cecece]">
-              <div className="notes-panel w-1/3 p-3 border-r-1 border-[#cecece] overflow-auto">
+            <div className="wrapper flex w-full justify-between h-[100vh] border-t-[#cecece]">
+              <div className="notes-panel overflow-auto w-full md:w-1/3 p-3 border-r-1 border-[#cecece]">
                 {!isLoading &&
                   <NotesPanel notes={notes} selectNote={(note) => {
                       setSelectedNote(note)
                       setNoteSelected(true)
                     }}
-                    newNote={() => setNoteSelected(false)}
+                    newNote={() => {
+                      setNoteSelected(true)
+                      setSelectedNote(undefined)
+                    }}
                     searchFilterOn={searchFilterOn}
                     clearSearch={resetSearch}
                   />
                 }
                 {isLoading && "loading..."}
               </div>
-              <div className="w-2/3 p-4 px-6 overflow-auto">
+              <div className={`note-panel overflow-auto bg-white w-2/3 p-4 px-6 mobile ${noteSelected ? "force-mobile-display" : ""}`}>
                 {noteSelected && selectedNote ?
-                  <Note note={selectedNote} />
+                  <Note note={selectedNote} closeOut={() => setNoteSelected(false)} />
                   :
-                  <Editor addNewNote={addNewNote} addStatus={addStatus} />
+                  <Editor addNewNote={addNewNote} addStatus={addStatus} closeOut={() => setNoteSelected(false)} />
                 }
               </div>
             </div>
