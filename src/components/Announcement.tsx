@@ -5,7 +5,7 @@ export default function Announcement() {
     const [isVisible, setIsVisible] = useState<boolean>(true)
 
     return isVisible &&
-        <div className="bg-[#e5f6ff] w-full lg:w-[70%] m-auto p-5 pr-6 rounded-xl border border-[#94c0d5] text-[0.9rem] relative">
+        <div className="bg-[#e5f6ff] w-full lg:w-[70%] m-auto p-5 pr-6 rounded-xl border border-[#94c0d5] text-[0.9rem] relative shadow-md">
             <div className="absolute right-2 top-1 pointer-cursor" role="button" onClick={() => setIsVisible(false)}>
                 <CloseIcon className="pointer-cursor" sx={{ fontSize: "1rem"}} />
             </div>
