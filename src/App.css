@@ -56,15 +56,26 @@ p {
   .mobile {
     display: none;
   }
+  .wrapper {
+    height: 100vh;
+  }
   .force-mobile-display {
     display: block!important;
   }
 }
 
 @media (max-width: 760px) {
+  .main {
+    overflow: auto;
+  }
+  .wrapper {
+    height: 100vh;
+    overflow: auto;
+  }
   .note-panel {
     position: absolute;
     width: 100%;
+    overflow: auto;
   }
 }
 

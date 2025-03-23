@@ -75,14 +75,14 @@ function App() {
 
   return (
     <>
-      <div className="h-[100vh] overflow-hidden main">
+      <div className="h-[100vh] main">
         <Announcement />
         <header>
             <div><SearchNote searchNote={searchNote} clearSearch={resetSearch} searchFilterOn={searchFilterOn} /></div>
           </header>
           <main>
-            <div className="flex w-full justify-between h-[100vh] border-t-[#cecece]">
-              <div className="notes-panel w-full md:w-1/3 p-3 border-r-1 border-[#cecece] overflow-auto">
+            <div className="wrapper flex w-full justify-between h-[100vh] border-t-[#cecece]">
+              <div className="notes-panel overflow-auto w-full md:w-1/3 p-3 border-r-1 border-[#cecece]">
                 {!isLoading &&
                   <NotesPanel notes={notes} selectNote={(note) => {
                       setSelectedNote(note)
@@ -98,7 +98,7 @@ function App() {
                 }
                 {isLoading && "loading..."}
               </div>
-              <div className={`note-panel w-2/3 p-4 px-6 overflow-auto mobile ${noteSelected ? "force-mobile-display" : ""}`}>
+              <div className={`note-panel overflow-auto bg-white w-2/3 p-4 px-6 mobile ${noteSelected ? "force-mobile-display" : ""}`}>
                 {noteSelected && selectedNote ?
                   <Note note={selectedNote} closeOut={() => setNoteSelected(false)} />
                   :
