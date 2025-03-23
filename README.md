@@ -13,3 +13,5 @@ Note: Not **AS** mobile-friendly at the moment, so please view on your DESKTOP.
 React + Vite 
 ## **Back end:** 
 FastAPI + Python + OpenAI Embeddings + AWS RDS PostgreSQL
+
+![image](https://github.com/user-attachments/assets/beb3efbc-dfd7-4169-9cb3-5ed862e99823)
