@@ -7,6 +7,8 @@ This app is paired with back end in [notes-search-ai-api](https://github.com/svy
 ## Demo
 [Smart Notes](https://smartnotesai.netlify.app/)
 
+Note: Not **AS** mobile-friendly at the moment, so please view on your DESKTOP. 
+
 ## **Front end:**
 React + Vite 
 ## **Back end:** 

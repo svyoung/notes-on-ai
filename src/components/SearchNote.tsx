@@ -22,7 +22,7 @@ export default function SearchNote({ searchNote, searchFilterOn, clearSearch }:P
 
     return (
         <div className="px-4 pt-4">
-            <div className="rounded-[40px] border-1 border-[#cecece] p-3 relative">
+            <div className="rounded-[40px] border-2 border-[#cecece] p-3 relative">
                 <input className="w-full outline-none border-none" placeholder="Search: What did I say about EV cars again?..." value={searchText} onChange={(e) => setSearchText(e.target.value)} onKeyDown={onSearch} />
                 {searchFilterOn && <div className="reset-search absolute top-2 right-4 cursor-pointer" role="button" onClick={onClearSearch}>
                     <CloseIcon sx={{ fontSize: "2rem"}} />
