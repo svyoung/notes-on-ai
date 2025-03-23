@@ -1,6 +1,5 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import { useDebounce } from 'use-debounce';
-import Announcement from './Announcement';
 import CloseIcon from '@mui/icons-material/Close';
 
 interface Note {
