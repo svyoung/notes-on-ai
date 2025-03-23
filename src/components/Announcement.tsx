@@ -7,7 +7,7 @@ export default function Announcement() {
     return isVisible &&
         <>
             <div className="absolute top-0 right-0 bg-white opacity-70 overlay h-[100vh] w-full opacity-80"></div>
-            <div className="announcement bg-[#e5f6ff] w-[90%] md:w-[90%] sm:w-[40%] m-auto p-5 pr-6 rounded-xl border border-[#94c0d5] text-[0.9rem] relative shadow-md">
+            <div className="announcement bg-[#e5f6ff] w-[90%] md:w-[40%] m-auto p-5 pr-6 rounded-xl border border-[#94c0d5] text-[0.9rem] relative shadow-md">
             <div className="absolute right-2 top-1 pointer-cursor" role="button" onClick={() => setIsVisible(false)}>
                 <CloseIcon className="pointer-cursor" sx={{ fontSize: "1.5rem"}} />
             </div>
