@@ -1,9 +1,13 @@
+import { Note } from "../types/types"
+
 export const fetchAllNotes = async (url: string) => {
     try {
-        const notes = await fetch(`${url}/all_notes`)
-        return await notes.json()
+        const response = await fetch(`${url}/all_notes`);
+        const data = await response.json();
+        return data;
     } catch(e) {
         console.log("There was an issue fetching all notes.", e)
+        throw e
     } 
 }
 
@@ -13,12 +17,8 @@ export const searchSimilaryNotes = async (url: string, query: string) => {
         return await results.json()
     } catch(e) {
         console.log("There was error performing your search.", e)
+        throw e
     }
-}
-
-interface Note {
-    title: string,
-    text: string
 }
 
 export const addNote = async (url: string, note:Note) => {
@@ -33,5 +33,6 @@ export const addNote = async (url: string, note:Note) => {
         return await response.json()
     } catch(e) {
         console.log("There was error adding note.", e)
+        throw e
     } 
 }

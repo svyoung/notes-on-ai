@@ -1,13 +1,8 @@
 import CloseIcon from '@mui/icons-material/Close';
-
-interface Note {
-    id?: number,
-    title: string,
-    text: string
-}
+import { Note as NoteType } from '../../types/types';
 
 interface Props {
-    note: Note,
+    note: NoteType,
     closeOut: () => void
 }
 export default function Note({ note, closeOut }: Props) {
@@ -24,7 +19,6 @@ export default function Note({ note, closeOut }: Props) {
                     {note.text}
                 </div>
             </div>
-        </div>
-        
+        </div>     
     )
 }

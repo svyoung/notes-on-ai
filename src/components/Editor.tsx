@@ -1,11 +1,7 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import { useDebounce } from 'use-debounce';
+import { Note } from '../types/types';
 import CloseIcon from '@mui/icons-material/Close';
-
-interface Note {
-  title: string,
-  text: string
-}
 
 interface Props {
   addNewNote: (note:Note) => void
