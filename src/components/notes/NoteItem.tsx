@@ -1,9 +1,4 @@
-
-interface Note {
-    id?: number
-    title: string
-    text: string
-}
+import { Note } from "../../types/types"
 
 interface Props {
     note: Note
