@@ -13,6 +13,7 @@ export default function SearchNote({ searchNote, searchFilterOn, clearSearch }:P
         if(event.key === "Enter" && searchText !== "") {
             searchNote(searchText)
             setSearchText("")
+            console.log("Search notes...")
         }
     }
 
